@@ -11,6 +11,17 @@ for i in range(1,n+1):
      ans[i][i]=0
      p[i][i]=i
 
+##60分版本
+##for ll in range(2,n+1):
+##    for i in range(1,n-ll+1+1):
+##        j=i+ll-1
+##        for k in range(i,j+1):
+##            val = ans[i][k]+ans[k+1][j]+sums[j]-sums[i-1]
+##            if val<ans[i][j]:
+##                ans[i][j]=val
+##                p[i][j]=k
+
+## 满分版本 经平行四边形优化
 for ll in range(2,n+1):
     for i in range(1,n-ll+1+1):
         j=i+ll-1
