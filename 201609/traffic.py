@@ -70,7 +70,7 @@ pq.put(Node(0,1))
 while not pq.empty():
     x = pq.get()
     u = x.u
-    print(u)
+##    print(u)
     if visited[u]:continue
     visited[u]=True
     for k,v in edges[u].items():
