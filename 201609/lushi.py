@@ -14,8 +14,6 @@ class Role:
 
     def appendSummon(self,summon):
         self.summons.insert(summon.pos,summon)
-        for s in self.summons[summon.pos+1:]:
-            s.pos+=1
 
     def attack(self,i,j):
         i,j=int(i),int(j)

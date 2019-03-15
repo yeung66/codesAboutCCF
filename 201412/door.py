@@ -1,12 +1,9 @@
 n = int(input())
 records = input().split(' ')[:n]
 result = []
-times = {}
+times = {str(i):0 for i in range(1,n+1)}
 for r in records:
-    if r in times:
-        times[r]+=1
-    else:
-        times[r]=1
+    times[r]+=1
     result.append(times[r])
 
 print(' '.join(map(str,result)))

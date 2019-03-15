@@ -8,15 +8,15 @@ try:
 except EOFError:
     pass
 
-i = len(records)-1
-while i>=0:
+i = 0
+while i<len(records):
     r = records[i]
     if r and r.startswith('cancel'):
         row = int(r.split()[1])-1
-        if not records[row].startswith('cancel'):
-            records[row]=None
+##        if not records[row].startswith('cancel'):
+        records[row]=None
         records[i]=None
-    i-=1
+    i+=1
 
 records = filter(None,records)
 for r in records:

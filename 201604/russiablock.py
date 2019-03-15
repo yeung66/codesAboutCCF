@@ -3,6 +3,7 @@ board = []
 
 for _ in range(m):
     board.append(list(map(int,input().split()[:n])))
+# 哨兵元素
 board.append([1 for _ in range(10)])
 new = []
 for _ in range(4):

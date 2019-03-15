@@ -1,6 +1,7 @@
 n = int(input())
 nums = list(map(int,input().split()[:n]))
 
+#分而治之
 def find_largest(i,j):
     if i==j:return nums[i]
     elif j-i==1:return min(nums[i],nums[j])*2

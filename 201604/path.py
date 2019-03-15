@@ -10,7 +10,7 @@ for _ in range(n):
         base=[]
         path = path[1:]
     for p in path:
-        if not p or p=='/' or p=='.':continue
+        if not p or p=='.':continue
         elif p=='..':
             if len(base)>0:
                 base.pop()

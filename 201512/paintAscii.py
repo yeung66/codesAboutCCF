@@ -1,5 +1,3 @@
-import time
-test = time.time()
 n,m,q = tuple(map(int,input().split(' ')))
 board = [['.' for i in range(n)] for i in range(m)]
 
@@ -16,13 +14,6 @@ def fill(i,j,char):
             if 0<=x<n and 0<=y<m and board[y][x]!='-' and board[y][x]!='+' and board[y][x]!='|' and board[y][x]!=char:
                 board[y][x]=char
                 stack.append((x,y)) 
-    # if 0<=i<n and 0<=j<m and (i,j) not in visited and board[j][i] not in ('-','|','+'):
-    #     board[j][i] = char
-    #     visited.add((i,j))
-    #     fill(i+1,j,char)
-    #     fill(i-1,j,char)
-    #     fill(i,j-1,char)
-    #     fill(i,j+1,char)
 
 for _ in range(q):
     opera = input().split(' ')
@@ -49,4 +40,3 @@ board = board[::-1]
 for i in range(m):
     print(''.join(board[i]))
 
-print((time.time()-test)*1000)

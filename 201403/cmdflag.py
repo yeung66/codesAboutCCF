@@ -4,6 +4,7 @@ for i,c in enumerate(opts):
     if c==':' and i!=0:flags['-'+opts[i-1]]=1
     else:flags['-'+opts[i]]=0
 
+# 考虑特殊情况 带参数的命令的参数是命令
 n = int(input())
 for i in range(n):
     cmd = input().split(' ')[1:]

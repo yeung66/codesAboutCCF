@@ -15,7 +15,7 @@ for _ in range(m):
 ##            visited[i][j]=True
 ##            ans[start][j]=1
 ##            dfs(j,visited,start)
-##            visited[i][j]=False
+##            
 
 ## BFS 1s限制下50分
 ##def bfs(i,visited):

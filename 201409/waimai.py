@@ -8,10 +8,9 @@ for _ in range(m):
     
 directions = [(-1,0),(1,0),(0,1),(0,-1)]
 
-def bfs(x,y,visited):
-    dp[x][y]=0
+def bfs(start,visited):
     queue = []
-    queue.append((x,y))
+    queue.extend(start)
     while queue:
         i,j = queue.pop(0)
 ##        print(i,j)
@@ -30,13 +29,12 @@ for _ in range(k):
 danger = []
 for _ in range(d):
     x,y = list(map(int,input().split()))
-    danger.append((x,y))
+    visited[x][y]=True
 
 for bx,by in branchs:
-    visited = [[False for _ in range(n+1)]for _ in range(n+1)]
-    for x,y in danger:
-        visited[x][y]=True
-    bfs(bx,by,visited)
+    visited[bx][by]=True
+    dp[bx][by]=0
+bfs(branchs,visited)
 
 ##for i in range(1,n+1):print(dp[i][1:])
 ans = 0
