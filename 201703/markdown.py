@@ -62,7 +62,7 @@ for line_no,line in enumerate(process):
             while line[jpi]!=')':jpi+=1
             link = line[j+2:jpi]
             process[line_no]=line=line[:i]+'<a href="'+link+'">'+text+'</a>'+line[jpi+1:]
-            i+=7
+            i+=7+len(link)+1
         else:
             i+=1
             

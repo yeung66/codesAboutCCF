@@ -49,8 +49,8 @@ def dfs(node,sel):
             if node.id==sel[0][1:]:
                 ans.append(node)
                 return ans
-            for c in node.child:
-                ans.extend(dfs(c,sel))
+##            for c in node.child:
+##                ans.extend(dfs(c,sel))
         else:
             if node.type==sel[0].lower():ans.append(node)
             for c in node.child:

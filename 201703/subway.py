@@ -37,25 +37,41 @@ for _ in range(m):
 ##print(ans)
         
 visited = [False for _ in range(n+1)]
-ans = [INF for _ in range(n+1)]
-def spfa():
-    queue = [1,]
-    visited[1]=True
-    ans[1]=0
-    while queue:
-        i = queue.pop(0)
-        visited[i]=False
+##ans = [INF for _ in range(n+1)]
+##def spfa():
+##    queue = [1,]
+##    visited[1]=True
+##    ans[1]=0
+##    while queue:
+##        i = queue.pop(0)
+##        visited[i]=False
+##        for j in range(1,n+1):
+##            if edges[i][j]<INF:
+##                new = max(edges[i][j],ans[i])
+##                if new<ans[j]:
+##                    ans[j]=new
+##                    if not visited[j]:
+##                        queue.append(j)
+##                        visited[j]=True
+##
+##spfa()
+##
+from queue import PriorityQueue
+def dj():
+    pq = PriorityQueue()
+    pq.put((0,1))
+##    count=0
+    while not pq.empty():
+        cost,i = pq.get()
+        if visited[i]:continue
+        visited[i]=True
+        if i==n:return cost
+##        if count==n:return cost
         for j in range(1,n+1):
             if edges[i][j]<INF:
-                new = max(edges[i][j],ans[i])
-                if new<ans[j]:
-                    ans[j]=new
-                    if not visited[j]:
-                        queue.append(j)
-                        visited[j]=True
+                pq.put((max(cost,edges[i][j]),j))
 
-spfa()
-print(ans[n])
+print(dj())
                     
                 
                 

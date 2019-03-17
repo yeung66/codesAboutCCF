@@ -3,9 +3,7 @@ connect = [[0 for _ in range(M+1)] for _ in range(M+1)]
 
 edges = [set() for _ in range(M+1)]
 
-for i in range(1,M+1):
-    for j in range(1,M+1):
-        if i==j:connect[i][j]=1
+##for i in range(1,M+1):connect[i][i]=1
 
 for _ in range(N):
     u,v = list(map(int,input().split()))
@@ -24,13 +22,25 @@ def dfs(start,i):
             connect[start][j]=connect[j][start]=1
             dfs(start,j)
 
+def bfs(start):
+    q = [start,]
+    visited[start]=True
+    while q:
+        i = q.pop(0)
+        for j in edges[i]:
+            if not visited[j]:
+                connect[start][j]=connect[j][start]=1
+                q.append(j)
+                visited[j]=True
+
 
 for i in range(1,M+1):
     visited = [False for _ in range(M+1)]
-    dfs(i,i)
+    bfs(i)
 ##print(connect[1][1:N+1])
 
 count=0
+##print(connect)
 for c in connect:
-    if sum(c)==M:count+=1
+    if sum(c)==M-1:count+=1
 print(count)

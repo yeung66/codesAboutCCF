@@ -30,3 +30,5 @@ while i<n and j<n:
     else:j+=1
 
 print(ans)
+
+

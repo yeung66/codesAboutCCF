@@ -14,6 +14,7 @@ for _ in range(m):
         if v in dl[u]:dl[u][v]=min(c,dl[u][v])
         else:dl[u][v]=dl[v][u]=c
 
+# floyd算法 多源最短路径
 for k in range(1,n+1):
     for i in range(1,n+1):
         pre = xl[i]
@@ -24,11 +25,11 @@ for k in range(1,n+1):
                 elif pre[j]>pre[k]+nxt[j]:
                     pre[j]=pre[k]+nxt[j]
 
-for x in range(1,n+1):
-    for k,v in xl[x].items():
-        if x in xl[k]:xl[x][k]=xl[k][x]=min(xl[x][k],xl[k][x])
-        else:xl[k][x]=xl[x][k]
-# print(xl[1:])
+##for x in range(1,n+1):
+##    for k,v in xl[x].items():
+##        if x in xl[k]:xl[x][k]=xl[k][x]=min(xl[x][k],xl[k][x])
+##        else:xl[k][x]=xl[x][k]
+### print(xl[1:])
 
 from queue import Queue
 inqueue = [False for _ in range(n+1)]

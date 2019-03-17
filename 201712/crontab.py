@@ -10,8 +10,8 @@ class time:
         self.month = set(month)
         self.weekday = set(weekday)
 
-months = {'Jan':1,'Feb':2,'Mar':3,'Apr':4,'May':5,'Jun':6,'Jul':7,'Aug':8,'Sep':9,'Oct':10,'Nov':11,'Dec':12}
-weekdays = {'Sun':0,'Mon':1,'Tue':2,'Web':3,'Thu':4,'Fri':5,'Sat':6}
+months = {'jan':1,'feb':2,'mar':3,'apr':4,'may':5,'jun':6,'jul':7,'aug':8,'sep':9,'oct':10,'nov':11,'dec':12}
+weekdays = {'sun':0,'mon':1,'tue':2,'web':3,'thu':4,'fri':5,'sat':6}
 days_in_month = {1:31,2:28,3:31,4:30,5:31,6:30,7:31,8:31,9:30,10:31,11:30,12:31}
 
 tasks=[]
@@ -20,12 +20,13 @@ is_leap = lambda x:x%400==0 or (x%4==0 and x%100!=0)
 
 def process_input(input,t):
     #in input=='*':return list(range())
-    minute = [input]
+    minute = input.split(',')
 
-    if ',' in minute[0]:
-        minute=minute[0].split(',')
+##    if ',' in minute[0]:
+##        minute=minute[0].split(',')
     for i,m in enumerate(minute):
         if type(m)==int:continue
+        m = m.lower()
         if '-' in m:
             minute.pop(i)
             start,end = m.split('-')
@@ -56,7 +57,7 @@ for _ in range(n):
     if weekday=='*':weekday=list(range(7))
     else:weekday=process_input(weekday,1)
 
-    temp = start
+    temp = datetime.datetime.strptime(str(s),"%Y%m%d%H%M")
     while temp.year<=end.year:
         if is_leap(temp.year):days_in_month[2]=29
         else:days_in_month[2]=28
@@ -71,7 +72,7 @@ for _ in range(n):
                     for ms in minute:
                         mstr = str(ms) if ms >=10 else '0'+str(ms)
                         time = str(temp.year)+mostr+dstr+hstr+mstr
-                        if str(s)<=time<=str(t):
+                        if str(s)<=time<str(t):
                             if time in ans:
                                 ans[time].append(cmd)
                             else:
@@ -80,29 +81,7 @@ for _ in range(n):
         
         add = 366 if is_leap(temp.year) else 365
         temp+=datetime.timedelta(days=add)
-    # tasks.append((cmd,time(minute,hour,day,month,weekday)))
 
-
-
-# for k,v in tasks:
-#     print(v.weekday)
-
-# while start<end:
-#     total = start.minute,start.hour,start.day,start.month,start.weekday()
-#     # print(total)
-#     total = (minute,hour,day,month,weekday ) = tuple(map(str,total))
-#     weekday = str(int(weekday)+1) if int(weekday)<6 else '0'
-#     # print(total)
-#     for k,v in tasks:
-#         # print(minute,v.minute)
-#         if '*' not in v.minute and minute not in v.minute:continue
-#         if '*' not in v.hour and hour not in v.hour:continue
-#         if '*' not in v.day and day not in v.day:continue
-#         if '*' not in v.month and month not in v.month:continue
-#         if '*' not in v.weekday and weekday not in v.weekday:continue
-#         print(start.strftime('%Y%m%d%H%M'),k)
-#         # print(weekday)
-#     start+=datetime.timedelta(minutes=1)
     
 ans = [(k,v) for k,v in ans.items()]
 ans.sort(key=lambda x:x[0])
